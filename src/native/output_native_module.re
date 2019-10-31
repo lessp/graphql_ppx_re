@@ -12,7 +12,6 @@ module StringSet = Set.Make(String);
 module VariableFinderImpl = {
   type t = ref(StringSet.t);
   let make_self = _ => ref(StringSet.empty);
-
   include Traversal_utils.AbstractVisitor;
 
   let enter_variable_value = (self, _, v) =>
@@ -227,7 +226,7 @@ let generate_default_operation =
           [%stri let makeWithVariables = [%e make_with_variables_fn]],
         ],
       ]),
-      /* ret_type_magic */
+      ret_type_magic,
     ]);
   };
 };
@@ -278,7 +277,7 @@ let generate_fragment_module =
             ]
           ],
         ],
-        /* ret_type_magic */
+        ret_type_magic,
       ]);
     };
 
